@@ -1,12 +1,13 @@
 # gatedtrain
 
-gatedtrain checks whether a newly trained model checkpoint is really better than the model it started from. It
+gatedtrain is a prototype post-training framework. It checks whether a newly trained model checkpoint is really
+better than the model it started from. It
 calls the new checkpoint better only when it beats a criterion registered before training (the metric, the margin,
 the sample size and the evaluation seeds), on test data the trainer never saw; the report says PASS, FAIL,
 INCONCLUSIVE or MISSING, with the achieved power. It also records which data each checkpoint consumed, so a data
 defect can be traced to the checkpoints it reached.
 
-It is a prototype, for people who fine-tune models and want a decision they can defend.
+It is for people who fine-tune models and want a decision they can defend.
 
 **Start here:** the [documentation](https://gatedtrain.github.io/gatedtrain/) and its
 [CPU quickstart](https://gatedtrain.github.io/gatedtrain/quickstart/). The framework is on PyPI: `pip install gatedtrain`.
@@ -23,7 +24,8 @@ flowchart LR
 - [`gatedtrain`](https://github.com/gatedtrain/gatedtrain): the framework, its adapter SDK and conformance kit.
 - [`gatedtrain-design`](https://github.com/gatedtrain/gatedtrain-design): the design set the framework implements.
 - [`gatedtrain-pack-text-gsm8k`](https://github.com/gatedtrain/gatedtrain-pack-text-gsm8k): a scenario pack for
-  AI-native projects (preview): GRPO on GSM8K, with the sealed test run by a keeper.
+  gatedtrain's AI-native projects (a preview): it trains a small model on GSM8K math questions on your GPU, while a
+  separate service under its own OS user holds back part of the questions and runs the final test.
 - `gatedtrain-recipe-*`: one repository per worked example (LLM, VLM, diffusion, video, speech, robotics, and
   control), each with its adapter, scripts, and the gate result of its published run:
 
